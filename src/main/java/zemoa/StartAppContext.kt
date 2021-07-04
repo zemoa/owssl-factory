@@ -1,15 +1,18 @@
-package zemoa;
+package zemoa
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationListener;
-import org.springframework.stereotype.Component;
+import org.slf4j.LoggerFactory
+import org.springframework.context.ApplicationListener
+import org.springframework.stereotype.Component
+import zemoa.StartAppContext
 
 @Component
-public class StartAppContext implements ApplicationListener<AppStartingEvent> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(StartAppContext.class);
-    @Override
-    public void onApplicationEvent(AppStartingEvent appStartingEvent) {
-        LOGGER.warn("App Starting");
+class StartAppContext : ApplicationListener<AppStartingEvent?> {
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(StartAppContext::class.java)
+    }
+
+
+    override fun onApplicationEvent(event: AppStartingEvent) {
+        LOGGER.info("App Starting using java version ${SystemInfo.javaVersion()} and javafx version ${SystemInfo.javafxVersion()}")
     }
 }

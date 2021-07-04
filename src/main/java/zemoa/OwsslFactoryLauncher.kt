@@ -1,11 +1,13 @@
-package zemoa;
+package zemoa
 
-import javafx.application.Application;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import javafx.application.Application
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+import zemoa.OwsslFactoryApp
 
 @SpringBootApplication
-public class OwsslFactoryLauncher {
-    public static void main(String[] args) {
-        Application.launch(OwsslFactoryApp.class, args);
-    }
+class OwsslFactoryLauncher
+
+fun main(args: Array<String>) {
+    Application.launch(OwsslFactoryApp::class.java, *args)
 }

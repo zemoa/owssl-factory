@@ -1,13 +1,11 @@
-package zemoa;
+package zemoa
 
-public class SystemInfo {
-
-    public static String javaVersion() {
-        return System.getProperty("java.version");
+object SystemInfo {
+    fun javaVersion(): String {
+        return System.getProperty("java.version")
     }
 
-    public static String javafxVersion() {
-        return System.getProperty("javafx.version");
+    fun javafxVersion(): String {
+        return System.getProperty("javafx.version")
     }
-
 }
