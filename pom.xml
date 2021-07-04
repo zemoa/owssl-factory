@@ -17,6 +17,11 @@
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -38,7 +43,16 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>zemoa.App</mainClass>
+                            <mainClass>zemoa.OwsslFactoryApp</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>debug</id>
+                        <configuration>
+                            <options>
+                                <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:1044</option>
+                            </options>
+                            <mainClass>zemoa.OwsslFactoryApp</mainClass>
                         </configuration>
                     </execution>
                 </executions>
