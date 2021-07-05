@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zemoa.controllers.HomeController">
+   <children>
+      <MFXButton buttonType="RAISED" maxWidth="1.7976931348623157E308" onAction="#onCreateRootCertificateClicked" text="Create Root Certificate" />
+      <MFXButton buttonType="RAISED" maxWidth="1.7976931348623157E308" onAction="#onCreateCertificateClicked" text="Create Certificate" />
+   </children>
+</VBox>

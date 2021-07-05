@@ -25,6 +25,8 @@ dependencies {
     implementation("org.openjfx:javafx-fxml:16")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("io.github.palexdev:materialfx:11.11.1")
+    implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
 }
 
 group = "zemoa"
