@@ -28,6 +28,7 @@ class MainController(private var navigationState: NavigationState, applicationCo
         Platform.runLater {
             val child = when (screen) {
                 Screen.HOME -> ControllerLoader.load("/home.fxml", applicationContext)
+                Screen.CREATE_ROOT_CERT -> ControllerLoader.load("/create_root_ca.fxml", applicationContext)
                 else -> ControllerLoader.load("/home.fxml", applicationContext)
             }
             mainContainer.children.clear()

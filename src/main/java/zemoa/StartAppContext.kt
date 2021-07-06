@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 import zemoa.StartAppContext
 
 @Component
-class StartAppContext : ApplicationListener<AppStartingEvent?> {
+class StartAppContext : ApplicationListener<AppStartingEvent> {
     companion object {
         private val LOGGER = LoggerFactory.getLogger(StartAppContext::class.java)
     }

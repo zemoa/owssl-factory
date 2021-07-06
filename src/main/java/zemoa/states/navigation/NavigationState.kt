@@ -12,8 +12,25 @@ import zemoa.states.State
 @Component
 class NavigationState : State {
     var currentScreen: BehaviorSubject<Screen> = BehaviorSubject.createDefault(Screen.HOME)
+    var history: BehaviorSubject<List<Screen>> = BehaviorSubject.createDefault(listOf(Screen.HOME))
     fun changeScreen(screen: Screen) {
-        if(currentScreen.value != screen)
+        if(currentScreen.value != screen) {
             currentScreen.onNext(screen)
+            addToHistory(screen)
+        }
+    }
+
+    fun back() {
+        if(history.value.size > 1) {
+            val nextHistory = history.value.toMutableList()
+            currentScreen.onNext(nextHistory.removeAt(nextHistory.size - 1))
+            history.onNext(nextHistory)
+        }
+    }
+
+    private fun addToHistory(screen: Screen) {
+        val nextHistory = history.value.toMutableList()
+        nextHistory.add(screen)
+        history.onNext(nextHistory)
     }
 }
