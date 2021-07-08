@@ -27,6 +27,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("io.github.palexdev:materialfx:11.11.1")
     implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
+    implementation("org.bouncycastle:bcpkix-jdk15on:1.69")
 }
 
 group = "zemoa"

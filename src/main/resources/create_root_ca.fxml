@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="zemoa.controllers.CreateRootCa"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zemoa.controllers.CreateRootCaController">
+   <children>
+      <VBox layoutX="273.0" layoutY="85.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GridPane hgap="10.0" vgap="10.0" VBox.vgrow="SOMETIMES">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <MFXTextField fx:id="inputCommonName" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Nom de l'autorité" validated="true" GridPane.columnSpan="2">
+                     <opaqueInsets>
+                        <Insets left="10.0" right="10.0" />
+                     </opaqueInsets>
+                  </MFXTextField>
+                  <MFXTextField fx:id="inputFileName" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Nom du fichier" validated="true" viewOrder="1.0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                  <MFXTextField fx:id="inputDuration" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Duréee (en jours)" validated="true" viewOrder="2.0" GridPane.rowIndex="2" />
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <MFXPasswordField fx:id="inputSecret" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Mot de passe" viewOrder="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                     <padding>
+                        <Insets right="35.0" />
+                     </padding>
+                  </AnchorPane>
+               </children>
+            </GridPane>
+            <TitledPane expanded="false" maxHeight="1.7976931348623157E308" text="Avancé" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox spacing="10.0">
+                     <children>
+                        <MFXTextField fx:id="inputState" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Etat" viewOrder="4.0" />
+                        <MFXTextField fx:id="inputLocality" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Localité" viewOrder="5.0" />
+                        <MFXTextField fx:id="inputOrganization" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Organization" viewOrder="7.0" />
+                        <MFXTextField fx:id="inputOrganizationUnit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Secteur" viewOrder="8.0" />
+                        <MFXTextField fx:id="inputEmail" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Email" viewOrder="9.0" />
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            <AnchorPane maxWidth="1.7976931348623157E308" VBox.vgrow="SOMETIMES">
+               <children>
+                  <MFXButton text="Valider" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" onAction="#onValidate" />
+                  <MFXButton text="Annuler" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

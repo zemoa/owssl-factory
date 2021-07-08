@@ -37,7 +37,7 @@ class OwsslFactoryApp : Application() {
     }
 
     override fun stop() {
-        applicationContext!!.close()
+        applicationContext.close()
         Platform.exit()
     }
 

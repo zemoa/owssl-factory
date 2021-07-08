@@ -6,12 +6,12 @@ import javafx.scene.layout.AnchorPane
 import org.slf4j.LoggerFactory
 import org.springframework.context.support.AbstractApplicationContext
 import org.springframework.stereotype.Component
-import zemoa.states.navigation.NavigationState
+import zemoa.states.navigation.NavigationStateHolder
 import java.util.concurrent.TimeUnit
 
 
 @Component
-class MainController(private var navigationState: NavigationState, applicationContext: AbstractApplicationContext): AbstractController(applicationContext) {
+class MainController(private var navigationState: NavigationStateHolder, applicationContext: AbstractApplicationContext): AbstractController(applicationContext) {
     companion object {
         private val LOGGER = LoggerFactory.getLogger(MainController::class.java)
     }
@@ -19,8 +19,8 @@ class MainController(private var navigationState: NavigationState, applicationCo
 
     @FXML
     fun initialize() {
-        navigationState.currentScreen.debounce(50, TimeUnit.MILLISECONDS).subscribe {
-                screen ->  changeScreen(screen)}
+        navigationState.state.debounce(50, TimeUnit.MILLISECONDS).subscribe {
+                navState ->  changeScreen(navState.currentScreen)}
     }
 
     private fun changeScreen(screen: Screen) {

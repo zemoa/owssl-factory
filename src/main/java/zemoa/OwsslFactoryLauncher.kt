@@ -20,5 +20,6 @@ import zemoa.OwsslFactoryApp
 class OwsslFactoryLauncher
 
 fun main(args: Array<String>) {
+    val url = OwsslFactoryLauncher::class.java.getResource("splash.fxml")
     Application.launch(OwsslFactoryApp::class.java, *args)
 }

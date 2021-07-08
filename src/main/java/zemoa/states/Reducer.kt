@@ -1,4 +1,4 @@
 package zemoa.states
 
-abstract class Reducer<T : State>(state: T) {
+abstract class Reducer<T : StateHolder<*>>(state: T) {
 }

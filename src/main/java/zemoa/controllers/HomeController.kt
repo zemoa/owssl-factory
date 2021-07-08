@@ -5,8 +5,7 @@ import javafx.fxml.FXML
 import org.slf4j.LoggerFactory
 import org.springframework.context.support.AbstractApplicationContext
 import org.springframework.stereotype.Component
-import zemoa.AppStartingEvent
-import zemoa.states.navigation.NavigationEvent
+import zemoa.states.navigation.ChangeScreenEvent
 
 @Component
 class HomeController(applicationContext: AbstractApplicationContext): AbstractController(applicationContext) {
@@ -16,12 +15,12 @@ class HomeController(applicationContext: AbstractApplicationContext): AbstractCo
     @FXML
     fun onCreateRootCertificateClicked(event: ActionEvent) {
         LOGGER.debug("onCreateRootCertificateClicked")
-        applicationContext.publishEvent(NavigationEvent(Screen.CREATE_ROOT_CERT))
+        applicationContext.publishEvent(ChangeScreenEvent(Screen.CREATE_ROOT_CERT))
     }
 
     @FXML
     fun onCreateCertificateClicked(event: ActionEvent) {
         LOGGER.debug("onCreateCertificateClicked")
-        applicationContext.publishEvent(NavigationEvent(Screen.CREATE_CERT))
+        applicationContext.publishEvent(ChangeScreenEvent(Screen.CREATE_CERT))
     }
 }
