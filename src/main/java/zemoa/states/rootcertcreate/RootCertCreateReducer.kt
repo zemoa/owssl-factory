@@ -12,21 +12,21 @@ import zemoa.states.main.StartLoadingEvent
 import zemoa.states.main.StopLoadingEvent
 
 @Service
-class CertCreateReducer(val state: CertCreateStateHolder,
-                        val certCreator: CertCreator,
-                        val certPersister: CertPersister,
-                        private val applicationEventPublisher: ApplicationEventPublisher): ApplicationListener<CertCreatEvent<*>>, Reducer<CertCreateStateHolder>(state) {
+class RootCertCreateReducer(val state: RootCertCreateStateHolder,
+                            val certCreator: CertCreator,
+                            val certPersister: CertPersister,
+                            private val applicationEventPublisher: ApplicationEventPublisher): ApplicationListener<RootCertCreatEvent<*>>, Reducer<RootCertCreateStateHolder>(state) {
     @Value("\${app.certrootdir}")
     lateinit var certDir: String;
-    override fun onApplicationEvent(event: CertCreatEvent<*>) {
+    override fun onApplicationEvent(event: RootCertCreatEvent<*>) {
         when(event) {
-            is StartCreationCertEvent -> onCreatCert(event)
+            is StartCreationRootCertEvent -> onCreatCert(event)
         }
     }
 
-    private fun onCreatCert(startCreationCertEvent: StartCreationCertEvent) {
+    private fun onCreatCert(startCreationCertEvent: StartCreationRootCertEvent) {
         applicationEventPublisher.publishEvent(StartLoadingEvent())
-        state.state.onNext(CertCreateState(creating = true, creationError = false))
+        state.state.onNext(RootCertCreateState(creating = true, creationError = false))
         val certPair = certCreator.createCACert(CertRequest(
             commonName = startCreationCertEvent.payload.commonName,
             secret= startCreationCertEvent.payload.secret,
@@ -40,7 +40,7 @@ class CertCreateReducer(val state: CertCreateStateHolder,
         ))
         certPersister.persistKey(certPair.first, certDir,startCreationCertEvent.payload.name)
         certPersister.persistCert(certPair.second, certDir,startCreationCertEvent.payload.name)
-        state.state.onNext(CertCreateState(creating = true))
+        state.state.onNext(RootCertCreateState(creating = true))
         applicationEventPublisher.publishEvent(StopLoadingEvent())
     }
 }

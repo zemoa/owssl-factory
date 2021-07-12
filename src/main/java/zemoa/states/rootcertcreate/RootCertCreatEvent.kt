@@ -2,9 +2,9 @@ package zemoa.states.rootcertcreate
 
 import zemoa.states.StateEvent
 
-abstract class CertCreatEvent<T>(payload: T): StateEvent<T>(payload)
+abstract class RootCertCreatEvent<T>(payload: T): StateEvent<T>(payload)
 
-class StartCreationCertEvent(payload: Payload): CertCreatEvent<StartCreationCertEvent.Payload>(payload) {
+class StartCreationRootCertEvent(payload: Payload): RootCertCreatEvent<StartCreationRootCertEvent.Payload>(payload) {
     data class Payload(
         val commonName: String,
         val secret: String,

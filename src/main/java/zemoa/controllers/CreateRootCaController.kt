@@ -7,7 +7,7 @@ import javafx.scene.control.TextFormatter
 import org.slf4j.LoggerFactory
 import org.springframework.context.support.AbstractApplicationContext
 import org.springframework.stereotype.Component
-import zemoa.states.rootcertcreate.StartCreationCertEvent
+import zemoa.states.rootcertcreate.StartCreationRootCertEvent
 import zemoa.states.navigation.ChangeScreenEvent
 
 @Component
@@ -37,8 +37,8 @@ class CreateRootCaController(applicationContext: AbstractApplicationContext): Ab
     }
 
     @FXML fun onValidate(event: ActionEvent) {
-        applicationContext.publishEvent(StartCreationCertEvent(
-            StartCreationCertEvent.Payload(
+        applicationContext.publishEvent(StartCreationRootCertEvent(
+            StartCreationRootCertEvent.Payload(
                 commonName = inputCommonName.text,
                 name = inputFileName.text,
                 duration = inputDuration.text.toLong(),

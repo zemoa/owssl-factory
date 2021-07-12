@@ -6,17 +6,17 @@ import org.springframework.stereotype.Component
 import zemoa.states.StateHolder
 import zemoa.states.StateHolderAbstract
 
-interface CertCreateStateHolder: StateHolder<CertCreateState>
+interface RootCertCreateStateHolder: StateHolder<RootCertCreateState>
 
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 @Component
-class CertCreateStateHolderImpl: StateHolderAbstract<CertCreateState>(), CertCreateStateHolder {
-     override val initState: CertCreateState
-        get() = CertCreateState()
+class RootCertCreateStateHolderImpl: StateHolderAbstract<RootCertCreateState>(), RootCertCreateStateHolder {
+     override val initState: RootCertCreateState
+        get() = RootCertCreateState()
 
 }
 
-data class CertCreateState(
+data class RootCertCreateState(
     val creating: Boolean = false,
     val creationError: Boolean = false
 )
