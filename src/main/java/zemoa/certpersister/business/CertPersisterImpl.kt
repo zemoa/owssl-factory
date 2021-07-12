@@ -21,7 +21,10 @@ class CertPersisterImpl : CertPersister {
     override fun persistCert(certificate: Certificate, path: String, keyName: String): String {
         val certificateWriter = StringWriter()
         certificateWriter.write("-----BEGIN CERTIFICATE-----\n")
-        certificateWriter.write(Base64.getEncoder().encodeToString(certificate.encoded))
+        val certContentBase64 = Base64.getEncoder().encodeToString(certificate.encoded)
+        certificateWriter.write(
+            certContentBase64.split("(?<=\\G.{64})".toRegex()).joinToString(separator = "\n")
+        )
         certificateWriter.write("\n-----END CERTIFICATE-----\n")
         val fileWriter = FileWriter(Path(path, "$keyName.pem").toString());
         fileWriter.write(certificateWriter.toString())
