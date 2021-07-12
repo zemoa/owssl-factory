@@ -12,6 +12,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.context.ConfigurableApplicationContext
 import zemoa.OwsslFactoryApp
 import zemoa.controllers.ControllerLoader
+import zemoa.controllers.MainController
 import java.io.IOException
 
 /**
@@ -22,7 +23,8 @@ class OwsslFactoryApp : Application() {
     override fun start(stage: Stage) {
         applicationContext.publishEvent(AppStartingEvent(stage))
         try {
-            val root = ControllerLoader.load("/main.fxml", applicationContext)
+            ControllerLoader.preloadScreens(applicationContext)
+            val root = ControllerLoader.load(MainController.FXML, applicationContext)
             val scene = Scene(root, 640.0, 480.0)
             stage.scene = scene
         } catch (ex: IOException) {

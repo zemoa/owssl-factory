@@ -4,13 +4,20 @@ import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.scene.control.TextField
 import javafx.scene.control.TextFormatter
+import org.slf4j.LoggerFactory
 import org.springframework.context.support.AbstractApplicationContext
 import org.springframework.stereotype.Component
 import zemoa.states.certcreate.StartCreationCertEvent
+import zemoa.states.navigation.ChangeScreenEvent
 import java.util.function.UnaryOperator
 
 @Component
 class CreateRootCaController(applicationContext: AbstractApplicationContext): AbstractController(applicationContext) {
+    companion object {
+        val FXML = "/create_root_ca.fxml"
+        private val LOGGER = LoggerFactory.getLogger(HomeController::class.java)
+    }
+
     @FXML lateinit var inputCommonName: TextField
     @FXML lateinit var inputFileName: TextField
     @FXML lateinit var inputDuration: TextField
@@ -45,5 +52,9 @@ class CreateRootCaController(applicationContext: AbstractApplicationContext): Ab
                 countryName = null
             )
         ))
+    }
+
+    @FXML fun onCancel(event: ActionEvent) {
+        applicationContext.publishEvent(ChangeScreenEvent(Screen.HOME))
     }
 }

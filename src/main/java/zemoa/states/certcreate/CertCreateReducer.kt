@@ -1,15 +1,23 @@
 package zemoa.states.certcreate
 
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.context.ApplicationListener
 import org.springframework.stereotype.Service
 import zemoa.certcreator.api.CertCreator
 import zemoa.certcreator.api.CertRequest
 import zemoa.certpersister.api.CertPersister
+import zemoa.controllers.Screen
 import zemoa.states.Reducer
+import zemoa.states.main.StartLoadingEvent
+import zemoa.states.main.StopLoadingEvent
+import zemoa.states.navigation.ChangeScreenEvent
 
 @Service
-class CertCreateReducer(val state: CertCreateStateHolder, val certCreator: CertCreator, val certPersister: CertPersister): ApplicationListener<CertCreatEvent<*>>, Reducer<CertCreateStateHolder>(state) {
+class CertCreateReducer(val state: CertCreateStateHolder,
+                        val certCreator: CertCreator,
+                        val certPersister: CertPersister,
+                        private val applicationEventPublisher: ApplicationEventPublisher): ApplicationListener<CertCreatEvent<*>>, Reducer<CertCreateStateHolder>(state) {
     @Value("\${app.certrootdir}")
     lateinit var certDir: String;
     override fun onApplicationEvent(event: CertCreatEvent<*>) {
@@ -19,6 +27,7 @@ class CertCreateReducer(val state: CertCreateStateHolder, val certCreator: CertC
     }
 
     private fun onCreatCert(startCreationCertEvent: StartCreationCertEvent) {
+        applicationEventPublisher.publishEvent(StartLoadingEvent())
         state.state.onNext(CertCreateState(creating = true, creationError = false))
         val certPair = certCreator.createCACert(CertRequest(
             commonName = startCreationCertEvent.payload.commonName,
@@ -34,5 +43,6 @@ class CertCreateReducer(val state: CertCreateStateHolder, val certCreator: CertC
         certPersister.persistKey(certPair.first, certDir,startCreationCertEvent.payload.name)
         certPersister.persistCert(certPair.second, certDir,startCreationCertEvent.payload.name)
         state.state.onNext(CertCreateState(creating = true))
+        applicationEventPublisher.publishEvent(StopLoadingEvent())
     }
 }

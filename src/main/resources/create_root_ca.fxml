@@ -61,7 +61,7 @@
             <AnchorPane maxWidth="1.7976931348623157E308" VBox.vgrow="SOMETIMES">
                <children>
                   <MFXButton text="Valider" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" onAction="#onValidate" />
-                  <MFXButton text="Annuler" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <MFXButton text="Annuler" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" onAction="#onCancel"/>
                </children>
                <padding>
                   <Insets top="10.0" />

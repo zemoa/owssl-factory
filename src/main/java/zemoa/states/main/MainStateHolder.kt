@@ -1,4 +1,4 @@
-package zemoa.states.navigation
+package zemoa.states.main
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory
 import org.springframework.context.annotation.Scope
@@ -7,15 +7,15 @@ import zemoa.controllers.Screen
 import zemoa.states.StateHolder
 import zemoa.states.StateHolderAbstract
 
-interface NavigationStateHolder: StateHolder<NavigationState>
+interface MainStateHolder: StateHolder<MainState>
 
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 @Component
-class NavigationStateHolderImpl : StateHolderAbstract<NavigationState>(), NavigationStateHolder {
-    override val initState: NavigationState
-        get() = NavigationState()
+class MainStateHolderImpl : StateHolderAbstract<MainState>(), MainStateHolder {
+    override val initState: MainState
+        get() = MainState()
 }
 
-data class NavigationState(
-    var currentScreen: Screen = Screen.HOME
+data class MainState(
+    var loading: Boolean = false
 )

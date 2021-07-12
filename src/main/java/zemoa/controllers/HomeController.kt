@@ -10,7 +10,8 @@ import zemoa.states.navigation.ChangeScreenEvent
 @Component
 class HomeController(applicationContext: AbstractApplicationContext): AbstractController(applicationContext) {
     companion object {
-        val LOGGER = LoggerFactory.getLogger(HomeController::class.java)
+        val FXML = "/home.fxml"
+        private val LOGGER = LoggerFactory.getLogger(HomeController::class.java)
     }
     @FXML
     fun onCreateRootCertificateClicked(event: ActionEvent) {
