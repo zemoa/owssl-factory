@@ -1,4 +1,4 @@
-package zemoa.states.certcreate
+package zemoa.states.rootcertcreate
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.ApplicationEventPublisher
@@ -7,11 +7,9 @@ import org.springframework.stereotype.Service
 import zemoa.certcreator.api.CertCreator
 import zemoa.certcreator.api.CertRequest
 import zemoa.certpersister.api.CertPersister
-import zemoa.controllers.Screen
 import zemoa.states.Reducer
 import zemoa.states.main.StartLoadingEvent
 import zemoa.states.main.StopLoadingEvent
-import zemoa.states.navigation.ChangeScreenEvent
 
 @Service
 class CertCreateReducer(val state: CertCreateStateHolder,

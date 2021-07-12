@@ -1,6 +1,5 @@
-package zemoa.states.certcreate
+package zemoa.states.rootcertcreate
 
-import io.reactivex.rxjava3.subjects.BehaviorSubject
 import org.springframework.beans.factory.config.ConfigurableBeanFactory
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
